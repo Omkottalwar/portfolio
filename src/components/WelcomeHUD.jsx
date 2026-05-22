@@ -48,14 +48,15 @@ export default function WelcomeHUD({ onEnter }) {
           </h1>
 
           <p style={{
-            fontSize: '16px',
-            color: 'var(--text-gray)',
-            lineHeight: 1.6,
-            maxWidth: '440px',
+            fontSize: '16.5px',
+            color: 'var(--text-white)',
+            lineHeight: 1.65,
+            maxWidth: '450px',
             marginBottom: '36px',
+            textShadow: '0 2px 4px rgba(0, 0, 0, 0.9)',
           }}>
             A MERN Stack Developer who builds full-stack web applications
-            with MongoDB, Express.js, React, and Node.js.
+            with <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>MongoDB</strong>, <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>Express.js</strong>, <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>React</strong>, and <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>Node.js</strong>.
           </p>
 
           <div className="welcome-buttons">

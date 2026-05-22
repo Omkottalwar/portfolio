@@ -75,7 +75,7 @@ export default function DatabaseGrid() {
       <div className="fade-in">
         <div className="section-label">Projects</div>
         <h2 className="section-title">Things I've Built</h2>
-        <p style={{ fontSize: '16px', color: 'var(--text-gray)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px' }}>
+        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
           Four full-stack applications — from a production school management system to personal passion projects, all deployed and live.
         </p>
       </div>

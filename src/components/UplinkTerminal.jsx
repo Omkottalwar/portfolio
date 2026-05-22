@@ -60,7 +60,7 @@ export default function UplinkTerminal() {
       <div className="fade-in">
         <div className="section-label">Contact</div>
         <h2 className="section-title">Let's Work Together</h2>
-        <p style={{ fontSize: '16px', color: 'var(--text-gray)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px' }}>
+        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
           Have a project in mind or want to chat? Drop me a message and I'll get back to you.
         </p>
       </div>
@@ -70,11 +70,11 @@ export default function UplinkTerminal() {
         <div className="card fade-in" style={{ padding: '36px', animationDelay: '0.15s' }}>
           {isSent ? (
             <div style={{ textAlign: 'center', padding: '40px 0' }}>
-              <CheckCircle2 size={48} color="var(--orange)" style={{ marginBottom: '16px' }} />
+               <CheckCircle2 size={48} color="var(--orange)" style={{ marginBottom: '16px' }} />
               <h3 style={{ fontSize: '20px', color: 'var(--text-white)', marginBottom: '8px', fontFamily: 'var(--font-display)' }}>
                 Message Sent!
               </h3>
-              <p style={{ color: 'var(--text-gray)', fontSize: '14px', marginBottom: '24px' }}>
+              <p style={{ color: 'var(--text-white)', fontSize: '14.5px', marginBottom: '24px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
                 Thanks for reaching out. I'll get back to you soon.
               </p>
               <button className="btn-outline" onClick={() => { setIsSent(false); setFormData({ name: '', email: '', message: '' }); }}>

@@ -54,7 +54,7 @@ export default function MatrixSkills() {
       <div className="fade-in">
         <div className="section-label">Skills</div>
         <h2 className="section-title">My Tech Stack</h2>
-        <p style={{ fontSize: '16px', color: 'var(--text-gray)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px' }}>
+        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
           Technologies I work with daily to build full-stack web applications.
         </p>
       </div>
