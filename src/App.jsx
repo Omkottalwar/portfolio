@@ -135,19 +135,20 @@ export default function App() {
             <WhatsAppIcon />
             <span>WhatsApp</span>
           </a>
-
-          {/* Mobile Menu Toggle Button */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
-            aria-label="Toggle Navigation Menu"
-          >
-            <span className="toggle-bar"></span>
-            <span className="toggle-bar"></span>
-            <span className="toggle-bar"></span>
-          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu Toggle Button (Direct child of root to avoid backdrop-filter containing block resets when scrolling) */}
+      <button 
+        onClick={() => setIsMenuOpen(!isMenuOpen)} 
+        className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+        aria-label="Toggle Navigation Menu"
+      >
+        <span className="toggle-bar"></span>
+        <span className="toggle-bar"></span>
+        <span className="toggle-bar"></span>
+      </button>
+
 
 
 
