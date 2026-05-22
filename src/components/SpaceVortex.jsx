@@ -1,14 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-export default function SpaceVortex({ activeTab }) {
+export default function SpaceVortex({ activeTab, isDarkMode }) {
   const containerRef = useRef(null);
   const activeTabRef = useRef(activeTab);
+  const isDarkModeRef = useRef(isDarkMode);
 
   // Sync activeTab to ref so the animation loop can access it without restarting the WebGL context
   useEffect(() => {
     activeTabRef.current = activeTab;
   }, [activeTab]);
+
+  // Sync isDarkMode to ref so the animation loop can access it without restarting the WebGL context
+  useEffect(() => {
+    isDarkModeRef.current = isDarkMode;
+  }, [isDarkMode]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -19,7 +25,7 @@ export default function SpaceVortex({ activeTab }) {
 
     // --- Scene Setup ---
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0c0c0e, 0.002);
+    scene.fog = new THREE.FogExp2(0xfaf7f6, 0.002);
 
     // --- Camera Setup ---
     const camera = new THREE.PerspectiveCamera(60, width / height, 1, 1000);
@@ -33,11 +39,14 @@ export default function SpaceVortex({ activeTab }) {
     });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x0a0a0c, 1);
+    renderer.setClearColor(0xfaf7f6, 1);
     
     // Clean container to eliminate stale/frozen canvas duplicates from React Strict Mode mounts
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
+
+    // --- Background Color Tracking for Dynamic Morphing ---
+    const currentBgColor = new THREE.Color(0xfaf7f6);
 
     // --- Mouse Parallax Tracking ---
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
@@ -48,20 +57,20 @@ export default function SpaceVortex({ activeTab }) {
     window.addEventListener('mousemove', handleMouseMove);
 
     // --- Lighting ---
-    const ambientLight = new THREE.AmbientLight(0x22222b, 0.8);
+    const ambientLight = new THREE.AmbientLight(0xfaf7f6, 1.3);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xff6b35, 3, 600);
+    const pointLight = new THREE.PointLight(0x5c7b8f, 4.0, 600);
     pointLight.position.set(120, 100, 100);
     scene.add(pointLight);
 
-    const pointLight2 = new THREE.PointLight(0xff8c5a, 2, 500);
+    const pointLight2 = new THREE.PointLight(0xa36a75, 3.0, 500);
     pointLight2.position.set(-150, -80, 50);
     scene.add(pointLight2);
 
     // --- Materials ---
     const primaryGlowMat = new THREE.MeshPhysicalMaterial({
-      color: 0xff6b35,
+      color: 0x5c7b8f,
       roughness: 0.1,
       metalness: 0.8,
       clearcoat: 0.8,
@@ -71,26 +80,26 @@ export default function SpaceVortex({ activeTab }) {
     });
 
     const darkMetallicMat = new THREE.MeshPhysicalMaterial({
-      color: 0x1f1f2e,
+      color: 0x864f59,
       roughness: 0.3,
       metalness: 0.9,
     });
 
     const secondaryWireframeMat = new THREE.MeshBasicMaterial({
-      color: 0xff6b35,
+      color: 0xa36a75,
       wireframe: true,
       transparent: true,
-      opacity: 0.1,
+      opacity: 0.15,
     });
 
     // --- Core Holographic Reactor Core (Torus Knot) ---
     const coreGeometry = new THREE.TorusKnotGeometry(22, 5.5, 240, 24);
     const coreMaterial = new THREE.MeshBasicMaterial({
-      color: 0xff6b35,
+      color: 0xa36a75,
       wireframe: true,
       transparent: true,
-      opacity: 0.45,
-      blending: THREE.AdditiveBlending
+      opacity: 0.5,
+      blending: THREE.NormalBlending
     });
     const reactorCore = new THREE.Mesh(coreGeometry, coreMaterial);
     reactorCore.position.set(0, 0, -20);
@@ -99,11 +108,11 @@ export default function SpaceVortex({ activeTab }) {
     // --- Gyroscopic Outer Ring around Reactor Core ---
     const ringGeometry = new THREE.TorusGeometry(37, 1.3, 24, 120);
     const ringMaterial = new THREE.MeshBasicMaterial({
-      color: 0xff8c5a,
+      color: 0x5c7b8f,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
-      blending: THREE.AdditiveBlending
+      opacity: 0.4,
+      blending: THREE.NormalBlending
     });
     const coreOuterRing = new THREE.Mesh(ringGeometry, ringMaterial);
     reactorCore.add(coreOuterRing);
@@ -140,12 +149,12 @@ export default function SpaceVortex({ activeTab }) {
     scene.add(wireSphere2);
 
     // --- Glowing Tron Holographic Grid Floor ---
-    const gridHelper = new THREE.GridHelper(900, 36, 0xff6b35, 0xff6b35);
+    const gridHelper = new THREE.GridHelper(900, 36, 0xa36a75, 0xa36a75);
     gridHelper.position.y = -120;
     gridHelper.position.z = -100;
     gridHelper.material.transparent = true;
-    gridHelper.material.opacity = 0.12;
-    gridHelper.material.blending = THREE.AdditiveBlending;
+    gridHelper.material.opacity = 0.08;
+    gridHelper.material.blending = THREE.NormalBlending;
     scene.add(gridHelper);
 
     // --- Dynamic Space Dust Particles ---
@@ -159,11 +168,11 @@ export default function SpaceVortex({ activeTab }) {
     }
     dustGeometry.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
     const dustMaterial = new THREE.PointsMaterial({
-      color: 0xff6b35,
+      color: 0x5c7b8f,
       size: 1.8,
       transparent: true,
-      opacity: 0.35,
-      blending: THREE.AdditiveBlending,
+      opacity: 0.3,
+      blending: THREE.NormalBlending,
       depthWrite: false,
     });
     const dust = new THREE.Points(dustGeometry, dustMaterial);
@@ -175,60 +184,60 @@ export default function SpaceVortex({ activeTab }) {
         camZ: 300,
         camXOffset: 0,
         camYOffset: 0,
-        light1Color: 0xff6b35, // orange
-        light2Color: 0xff8c5a, // light orange
-        dustSpeed: 0.015,
+        light1Color: 0xa36a75, // Dusty Mauve
+        light2Color: 0x5c7b8f, // Muted Slate-Blue
+        dustSpeed: 0.012,
         coreScale: 1.0,
         coreOpacity: 0.45,
-        gridOpacity: 0.12,
+        gridOpacity: 0.08,
         gridY: -120
       },
       about: {
         camZ: 240,
         camXOffset: -60,
         camYOffset: 20,
-        light1Color: 0xff6b35, // orange
-        light2Color: 0xffaa66, // amber orange
-        dustSpeed: 0.02,
+        light1Color: 0x864f59, // Rich Deep Burgundy
+        light2Color: 0x5c7b8f, // Muted Slate-Blue
+        dustSpeed: 0.015,
         coreScale: 1.25,
         coreOpacity: 0.5,
-        gridOpacity: 0.2,
+        gridOpacity: 0.12,
         gridY: -100
       },
       projects: {
         camZ: 210,
         camXOffset: 70,
         camYOffset: -30,
-        light1Color: 0xff5500, // intense red-orange
-        light2Color: 0xffa500, // bright gold
-        dustSpeed: 0.035,
+        light1Color: 0x425c6f, // Deep Ocean Slate
+        light2Color: 0xa36a75, // Dusty Mauve
+        dustSpeed: 0.02,
         coreScale: 1.45,
-        coreOpacity: 0.65,
-        gridOpacity: 0.35,
+        coreOpacity: 0.6,
+        gridOpacity: 0.18,
         gridY: -80
       },
       skills: {
         camZ: 190,
         camXOffset: -40,
         camYOffset: 50,
-        light1Color: 0xff8c00, // dark orange
-        light2Color: 0xff4500, // orange red
-        dustSpeed: 0.05, // hyper-processing speeds!
+        light1Color: 0x5c7b8f, // Muted Slate-Blue
+        light2Color: 0xbe8a94, // Softer Rose-Gold
+        dustSpeed: 0.025,
         coreScale: 1.6,
-        coreOpacity: 0.7,
-        gridOpacity: 0.25,
+        coreOpacity: 0.65,
+        gridOpacity: 0.14,
         gridY: -90
       },
       contact: {
         camZ: 270,
         camXOffset: 30,
         camYOffset: -10,
-        light1Color: 0xff7f50, // coral orange
-        light2Color: 0xff8c5a, // light orange
-        dustSpeed: 0.025,
+        light1Color: 0x864f59, // Rich Deep Burgundy
+        light2Color: 0x7796aa, // Soft Muted Steel Blue
+        dustSpeed: 0.018,
         coreScale: 1.15,
-        coreOpacity: 0.4,
-        gridOpacity: 0.3,
+        coreOpacity: 0.45,
+        gridOpacity: 0.15,
         gridY: -110
       }
     };
@@ -305,11 +314,56 @@ export default function SpaceVortex({ activeTab }) {
           camera.lookAt(0, 0, 0);
         }
 
-        // Light color lerping
-        const targetColor1 = new THREE.Color(config.light1Color);
-        const targetColor2 = new THREE.Color(config.light2Color);
-        if (pointLight) pointLight.color.lerp(targetColor1, 0.05);
-        if (pointLight2) pointLight2.color.lerp(targetColor2, 0.05);
+        // Dynamic Ambient & Background clearColor and fog color lerping
+        const targetBgColor = new THREE.Color();
+        if (isDarkModeRef.current) {
+          targetBgColor.setHex(0x080b10); // Deep Dark Slate space background
+        } else {
+          // Pastel light mode shades based on active page!
+          if (currentTab === 'about') targetBgColor.setHex(0xf5ebe6);       // Beige
+          else if (currentTab === 'projects') targetBgColor.setHex(0xe8f0e8); // Pista Green
+          else if (currentTab === 'skills') targetBgColor.setHex(0xe6f0fa);   // Light Blue
+          else targetBgColor.setHex(0xfff0f2);                               // Welcome & Contact Pink
+        }
+
+        // Fluid linear interpolation (lerp) of the background colors and fog
+        currentBgColor.lerp(targetBgColor, 0.04);
+        renderer.setClearColor(currentBgColor, 1);
+        if (scene.fog) {
+          scene.fog.color.copy(currentBgColor);
+        }
+        if (ambientLight) {
+          ambientLight.color.copy(currentBgColor);
+          const targetAmbientIntensity = isDarkModeRef.current ? 0.6 : 1.3;
+          ambientLight.intensity += (targetAmbientIntensity - ambientLight.intensity) * 0.04;
+        }
+
+        // Compute Point Lights & Materials colors and opacities
+        let targetColor1, targetColor2;
+        let targetCoreOpacity, targetGridOpacity;
+
+        if (isDarkModeRef.current) {
+          // Highly premium energetic cyber neon colors in dark mode!
+          targetColor1 = new THREE.Color(0xf35588); // Cyber Violet
+          targetColor2 = new THREE.Color(0x00f2fe); // Electric Cyan
+          targetCoreOpacity = 0.65;
+          targetGridOpacity = 0.18;
+          if (darkMetallicMat) {
+            darkMetallicMat.color.lerp(new THREE.Color(0xff7eb3), 0.04);
+          }
+        } else {
+          // Curated sophisticated dusty desaturated colors in light mode!
+          targetColor1 = new THREE.Color(config.light1Color);
+          targetColor2 = new THREE.Color(config.light2Color);
+          targetCoreOpacity = config.coreOpacity;
+          targetGridOpacity = config.gridOpacity;
+          if (darkMetallicMat) {
+            darkMetallicMat.color.lerp(new THREE.Color(0x864f59), 0.04);
+          }
+        }
+
+        if (pointLight) pointLight.color.lerp(targetColor1, 0.04);
+        if (pointLight2) pointLight2.color.lerp(targetColor2, 0.04);
 
         // Reactor Core (Torus Knot) animations
         if (reactorCore) {
@@ -347,11 +401,10 @@ export default function SpaceVortex({ activeTab }) {
           reactorCore.scale.z += (targetScale - reactorCore.scale.z) * 0.05;
         }
 
-        
         // Reactor core color & opacity lerp
         if (coreMaterial) {
-          coreMaterial.color.lerp(targetColor1, 0.05);
-          coreMaterial.opacity += (config.coreOpacity - coreMaterial.opacity) * 0.05;
+          coreMaterial.color.lerp(targetColor1, 0.04);
+          coreMaterial.opacity += (targetCoreOpacity - coreMaterial.opacity) * 0.04;
         }
 
         // Cube animations
@@ -391,7 +444,7 @@ export default function SpaceVortex({ activeTab }) {
           wireSphere1.rotation.y = time * 0.15;
         }
         if (secondaryWireframeMat) {
-          secondaryWireframeMat.color.lerp(targetColor2, 0.05);
+          secondaryWireframeMat.color.lerp(targetColor2, 0.04);
         }
 
         if (wireSphere2 && reactorCore) {
@@ -407,14 +460,14 @@ export default function SpaceVortex({ activeTab }) {
         // Dust speeds & colors
         if (dust && dustMaterial) {
           dust.rotation.y = time * (config.dustSpeed * 1.5);
-          dustMaterial.color.lerp(targetColor1, 0.05);
+          dustMaterial.color.lerp(targetColor1, 0.04);
         }
 
         // Grid floor dynamics (continuous wobbling + shift)
         if (gridHelper && gridHelper.material) {
           gridHelper.position.y += (config.gridY - gridHelper.position.y) * 0.04;
-          gridHelper.material.opacity += (config.gridOpacity - gridHelper.material.opacity) * 0.04;
-          gridHelper.material.color.lerp(targetColor1, 0.05);
+          gridHelper.material.opacity += (targetGridOpacity - gridHelper.material.opacity) * 0.04;
+          gridHelper.material.color.lerp(targetColor1, 0.04);
           
           // Continuous grid floating wobble even when mouse is still
           gridHelper.rotation.z = (mouse.x * 0.04) + Math.sin(time * 0.25) * 0.02;

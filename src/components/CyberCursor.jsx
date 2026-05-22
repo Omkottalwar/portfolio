@@ -92,12 +92,12 @@ export default function CyberCursor() {
           width: '8px',
           height: '8px',
           borderRadius: '50%',
-          backgroundColor: isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+          backgroundColor: isHovered ? 'var(--violet)' : 'var(--cyan)',
           pointerEvents: 'none',
           zIndex: 9999,
           transform: 'translate3d(-50%, -50%, 0)',
           transition: 'width 0.2s, height 0.2s, background-color 0.2s',
-          boxShadow: isHovered ? '0 0 10px var(--neon-pink)' : '0 0 10px var(--neon-cyan)',
+          boxShadow: isHovered ? '0 0 10px var(--violet)' : '0 0 10px var(--cyan)',
         }}
       />
       <div
@@ -108,14 +108,14 @@ export default function CyberCursor() {
           left: 0,
           width: isHovered ? '48px' : '32px',
           height: isHovered ? '48px' : '32px',
-          border: `1px solid ${isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)'}`,
+          border: `1px solid ${isHovered ? 'var(--violet)' : 'var(--cyan)'}`,
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 9998,
           margin: isHovered ? '-24px 0 0 -24px' : '-16px 0 0 -16px',
           transform: 'translate3d(-50%, -50%, 0)',
           transition: 'width 0.2s, height 0.2s, border-color 0.2s, margin 0.2s, transform 0.05s',
-          boxShadow: isHovered ? '0 0 15px rgba(255, 0, 127, 0.2)' : '0 0 10px rgba(0, 242, 254, 0.2)',
+          boxShadow: isHovered ? '0 0 15px rgba(163, 106, 117, 0.25)' : '0 0 10px rgba(92, 123, 143, 0.25)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -127,28 +127,28 @@ export default function CyberCursor() {
           width: '2px',
           height: '6px',
           top: '-4px',
-          backgroundColor: isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+          backgroundColor: isHovered ? 'var(--violet)' : 'var(--cyan)',
         }} />
         <div style={{
           position: 'absolute',
           width: '2px',
           height: '6px',
           bottom: '-4px',
-          backgroundColor: isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+          backgroundColor: isHovered ? 'var(--violet)' : 'var(--cyan)',
         }} />
         <div style={{
           position: 'absolute',
           width: '6px',
           height: '2px',
           left: '-4px',
-          backgroundColor: isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+          backgroundColor: isHovered ? 'var(--violet)' : 'var(--cyan)',
         }} />
         <div style={{
           position: 'absolute',
           width: '6px',
           height: '2px',
           right: '-4px',
-          backgroundColor: isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+          backgroundColor: isHovered ? 'var(--violet)' : 'var(--cyan)',
         }} />
         
         {/* Dynamic Telemetry Coordinates Text */}
@@ -159,12 +159,12 @@ export default function CyberCursor() {
             left: '32px',
             top: '50%',
             transform: 'translateY(-50%)',
-            fontFamily: 'var(--font-data)',
+            fontFamily: 'var(--font-mono)',
             fontSize: '9px',
-            color: isHovered ? 'var(--neon-pink)' : 'var(--neon-cyan)',
+            color: isHovered ? 'var(--violet)' : 'var(--cyan)',
             whiteSpace: 'nowrap',
             letterSpacing: '1px',
-            textShadow: '0 0 5px rgba(0, 242, 254, 0.5)',
+            textShadow: '0 0 5px rgba(92, 123, 143, 0.55)',
             pointerEvents: 'none',
           }}
         >

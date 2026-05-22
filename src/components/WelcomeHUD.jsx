@@ -53,10 +53,9 @@ export default function WelcomeHUD({ onEnter }) {
             lineHeight: 1.65,
             maxWidth: '450px',
             marginBottom: '36px',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.9)',
           }}>
             A MERN Stack Developer who builds full-stack web applications
-            with <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>MongoDB</strong>, <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>Express.js</strong>, <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>React</strong>, and <strong style={{ color: 'var(--orange-light)', textShadow: '0 0 10px rgba(255,140,90,0.2)', fontWeight: 700 }}>Node.js</strong>.
+            with <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>MongoDB</strong>, <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>Express.js</strong>, <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>React</strong>, and <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>Node.js</strong>.
           </p>
 
           <div className="welcome-buttons">
@@ -84,7 +83,7 @@ export default function WelcomeHUD({ onEnter }) {
               width: '100%',
               maxWidth: '420px',
               height: 'auto',
-              filter: 'drop-shadow(0 20px 40px rgba(255, 107, 53, 0.15))',
+              filter: 'drop-shadow(0 20px 40px rgba(163, 106, 117, 0.18))',
               animation: 'heroFloat 6s ease-in-out infinite',
             }}
           />
@@ -132,12 +131,12 @@ export default function WelcomeHUD({ onEnter }) {
           gap: 40px;
           position: relative;
           transition: all 0.5s var(--ease-out);
-          background: rgba(15, 15, 18, 0.45);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: rgba(255, 255, 255, 0.88); /* Enhanced opacity for text legibility */
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           box-shadow: 
-            0 24px 80px rgba(0, 0, 0, 0.5),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            0 24px 80px rgba(0, 0, 0, 0.04),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.7);
         }
 
 

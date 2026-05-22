@@ -21,16 +21,14 @@ export default function HomeHUD() {
             lineHeight: 1.8,
             color: 'var(--text-white)',
             marginBottom: '24px',
-            textShadow: '0 1px 3px rgba(0, 0, 0, 0.8)',
           }}>
-            I'm a final-year engineering student specializing in <strong style={{ color: 'var(--orange-light)', fontWeight: 700 }}>Artificial Intelligence & Machine Learning (AIML)</strong> at <strong style={{ color: 'var(--text-white)', fontWeight: 600 }}>ISBM College of Engineering, Pune</strong> (Class of 2027). I'm a full-stack web developer specializing in the MERN stack — <strong style={{ color: 'var(--orange-light)', fontWeight: 700 }}>MongoDB</strong>, <strong style={{ color: 'var(--orange-light)', fontWeight: 700 }}>Express.js</strong>, <strong style={{ color: 'var(--orange-light)', fontWeight: 700 }}>React</strong>, and <strong style={{ color: 'var(--orange-light)', fontWeight: 700 }}>Node.js</strong>, bridging high-performance intelligent backends with futuristic, responsive user interfaces.
+            I'm a final-year engineering student specializing in <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>Artificial Intelligence & Machine Learning (AIML)</strong> at <strong style={{ color: 'var(--text-white)', fontWeight: 600 }}>ISBM College of Engineering, Pune</strong> (Class of 2027). I'm a full-stack web developer specializing in the MERN stack — <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>MongoDB</strong>, <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>Express.js</strong>, <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>React</strong>, and <strong style={{ color: 'var(--violet-dark)', fontWeight: 700 }}>Node.js</strong>, bridging high-performance intelligent backends with futuristic, responsive user interfaces.
           </p>
           <p style={{
             fontSize: '16px',
             lineHeight: 1.8,
             color: 'var(--text-white)',
             marginBottom: '32px',
-            textShadow: '0 1px 3px rgba(0, 0, 0, 0.8)',
           }}>
             During my <a href="https://renasofttech.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--orange)', fontWeight: 700, textDecoration: 'none', transition: 'var(--transition-fast)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--orange-light)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--orange)'}>6-month internship at RenaSoftTech</a>, 
             I worked on <a href="https://www.aaplishala.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-white)', fontWeight: 700, textDecoration: 'underline', transition: 'var(--transition-fast)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--orange)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-white)'}>Aaplishala</a> — a comprehensive 

@@ -41,7 +41,7 @@ export default function UplinkTerminal() {
   const inputStyle = {
     width: '100%',
     background: 'var(--bg-primary)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
+    border: '1px solid var(--orange-border)',
     borderRadius: '10px',
     padding: '14px 18px',
     color: 'var(--text-white)',
@@ -60,7 +60,7 @@ export default function UplinkTerminal() {
       <div className="fade-in">
         <div className="section-label">Contact</div>
         <h2 className="section-title">Let's Work Together</h2>
-        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px' }}>
           Have a project in mind or want to chat? Drop me a message and I'll get back to you.
         </p>
       </div>
@@ -74,7 +74,7 @@ export default function UplinkTerminal() {
               <h3 style={{ fontSize: '20px', color: 'var(--text-white)', marginBottom: '8px', fontFamily: 'var(--font-display)' }}>
                 Message Sent!
               </h3>
-              <p style={{ color: 'var(--text-white)', fontSize: '14.5px', marginBottom: '24px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+              <p style={{ color: 'var(--text-white)', fontSize: '14.5px', marginBottom: '24px' }}>
                 Thanks for reaching out. I'll get back to you soon.
               </p>
               <button className="btn-outline" onClick={() => { setIsSent(false); setFormData({ name: '', email: '', message: '' }); }}>
@@ -96,7 +96,7 @@ export default function UplinkTerminal() {
                   placeholder="Your name"
                   style={inputStyle}
                   onFocus={(e) => e.target.style.borderColor = 'var(--orange)'}
-                  onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--orange-border)'}
                 />
               </div>
               <div>
@@ -112,7 +112,7 @@ export default function UplinkTerminal() {
                   placeholder="you@example.com"
                   style={inputStyle}
                   onFocus={(e) => e.target.style.borderColor = 'var(--orange)'}
-                  onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--orange-border)'}
                 />
               </div>
               <div>
@@ -128,7 +128,7 @@ export default function UplinkTerminal() {
                   placeholder="Tell me about your project..."
                   style={{ ...inputStyle, resize: 'none' }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--orange)'}
-                  onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                  onBlur={(e) => e.target.style.borderColor = 'var(--orange-border)'}
                 />
               </div>
               <button type="submit" className="btn-primary" disabled={isSubmitting} style={{ width: '100%', justifyContent: 'center' }}>

@@ -75,7 +75,7 @@ export default function DatabaseGrid() {
       <div className="fade-in">
         <div className="section-label">Projects</div>
         <h2 className="section-title">Things I've Built</h2>
-        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+        <p style={{ fontSize: '16.5px', color: 'var(--text-white)', maxWidth: '500px', lineHeight: 1.6, marginBottom: '48px' }}>
           Four full-stack applications — from a production school management system to personal passion projects, all deployed and live.
         </p>
       </div>
@@ -156,8 +156,8 @@ export default function DatabaseGrid() {
                 <ArrowUpRight size={14} />
               </div>
               {/* Live dot */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#4ade80' }}>
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 6px #4ade80' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#16a34a', fontWeight: 600 }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#16a34a', boxShadow: '0 0 6px rgba(22, 163, 74, 0.4)' }} />
                 Live
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function DatabaseGrid() {
                 position: 'absolute',
                 top: '16px',
                 right: '16px',
-                background: 'rgba(255,255,255,0.05)',
+                background: 'rgba(0,0,0,0.04)',
                 border: 'none',
                 borderRadius: '8px',
                 width: '36px',
@@ -192,7 +192,7 @@ export default function DatabaseGrid() {
                 transition: 'var(--transition-fast)',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--orange)'; e.currentTarget.style.background = 'var(--orange-glow)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-gray)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-gray)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
             >
               <X size={18} />
             </button>

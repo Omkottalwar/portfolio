@@ -3,24 +3,41 @@
    ========================================================================== */
 
 :root {
-  /* Core Palette */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #222222;
-  --bg-card: #252525;
-  --bg-card-hover: #2a2a2a;
-  --bg-elevated: #2e2e2e;
+  /* Light Cyber-Theme Core Palette (Sophisticated Cream & Warm Pink Off-white) */
+  --bg-primary: #FAF7F6;
+  --bg-secondary: #F2ECE9;
+  --bg-card: rgba(255, 255, 255, 0.82); /* Highly polished white glass */
+  --bg-card-hover: rgba(255, 255, 255, 0.94);
+  --bg-elevated: rgba(255, 255, 255, 0.98);
 
-  --orange: #ff6b35;
-  --orange-light: #ff8c5a;
-  --orange-dark: #e85d2c;
-  --orange-glow: rgba(255, 107, 53, 0.15);
-  --orange-border: rgba(255, 107, 53, 0.3);
+  /* Muted Slate-Teal / Slate-Blue Accents */
+  --cyan: #5c7b8f;
+  --cyan-light: #7796aa;
+  --cyan-dark: #425c6f;
+  --cyan-glow: rgba(92, 123, 143, 0.08);
+  --cyan-border: rgba(92, 123, 143, 0.16);
 
-  --text-white: #ffffff;
-  --text-light: #f5f5f7;
-  --text-gray: #d2d2d7;
-  --text-muted: #a1a1a6;
-  --text-dim: #86868b;
+  /* Dusty Mauve / Rose-Gold Accents */
+  --violet: #a36a75;
+  --violet-light: #be8a94;
+  --violet-dark: #864f59;
+  --violet-glow: rgba(163, 106, 117, 0.08);
+  --violet-border: rgba(163, 106, 117, 0.16);
+
+  /* Seamless Backward Compatibility Aliases to Dusty Mauve */
+  --orange: var(--violet);
+  --orange-light: var(--violet-light);
+  --orange-dark: var(--violet-dark);
+  --orange-glow: var(--violet-glow);
+  --orange-border: var(--violet-border);
+
+  /* Reverse High-Contrast Typography Palette (Slate Charcoal) */
+  --text-white: #232b35; /* Deep Steel/Slate Charcoal - highly readable yet soft and elegant */
+  --text-light: #3a4550; /* Slate-Gray 800 */
+  --text-gray: #52606d;  /* Muted Steel */
+  --text-muted: #6b7c8a; /* Steel Gray */
+  --text-dim: #8b9bb0;   /* Light Slate */
+  --text-white-pure: #ffffff; /* Dedicated pure white for active dark states */
 
 
   /* Typography */
@@ -32,6 +49,161 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --transition: all 0.4s var(--ease-out);
   --transition-fast: all 0.2s var(--ease-out);
+}
+
+/* ==========================================================================
+   DYNAMIC PASTEL SHADES & PREMIUM DARK MODE SYSTEMS
+   ========================================================================== */
+
+/* Dark Mode Variable Overrides */
+body.dark {
+  --bg-primary: #080B10;
+  --bg-secondary: #0F131C;
+  --bg-card: rgba(15, 23, 42, 0.72);
+  --bg-card-hover: rgba(22, 32, 54, 0.88);
+  --bg-elevated: rgba(15, 22, 38, 0.95);
+
+  /* Neon Cyber-Accents for Dark Mode */
+  --cyan: #00f2fe;
+  --cyan-light: #4facfe;
+  --cyan-dark: #0072ff;
+  --cyan-glow: rgba(0, 242, 254, 0.15);
+  --cyan-border: rgba(0, 242, 254, 0.25);
+
+  --violet: #f35588;
+  --violet-light: #ff758c;
+  --violet-dark: #ff7eb3;
+  --violet-glow: rgba(243, 85, 136, 0.15);
+  --violet-border: rgba(243, 85, 136, 0.25);
+
+  /* Typography variables inverted */
+  --text-white: #F8FAFC;
+  --text-light: #E2E8F0;
+  --text-gray: #94A3B8;
+  --text-muted: #64748B;
+  --text-dim: #475569;
+}
+
+/* Custom Scrollbar in Dark Mode */
+body.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+body.dark ::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+/* Scrolled Navbar Background in Dark Mode */
+body.dark .navbar-scrolled {
+  background: rgba(8, 11, 16, 0.8) !important;
+  border-bottom: 1px solid rgba(0, 242, 254, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Mobile Nav links Background in Dark Mode */
+@media (max-width: 768px) {
+  body.dark .nav-links {
+    background: rgba(8, 11, 16, 0.96) !important;
+    border-left: 1px solid rgba(0, 242, 254, 0.1) !important;
+  }
+  body.dark .menu-toggle {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+  }
+}
+
+/* Dynamic Page-Specific Light Pastel Mode Overrides (Strictly active when NOT in dark mode) */
+body:not(.dark).theme-welcome {
+  --bg-primary: #FFF0F2; /* Soft Light Pink */
+  --bg-secondary: #FDE2E7;
+  --violet: #a36a75;
+  --cyan: #5c7b8f;
+  --violet-border: rgba(163, 106, 117, 0.16);
+  --cyan-border: rgba(92, 123, 143, 0.16);
+}
+
+body:not(.dark).theme-about {
+  --bg-primary: #F5EBE6; /* Beige */
+  --bg-secondary: #EADCD6;
+  --violet: #a36a75;
+  --cyan: #8b7355; /* beige-toned desaturated cyan */
+  --violet-border: rgba(163, 106, 117, 0.16);
+  --cyan-border: rgba(139, 115, 85, 0.16);
+}
+
+body:not(.dark).theme-projects {
+  --bg-primary: #E8F0E8; /* Pista Green */
+  --bg-secondary: #D8E6D8;
+  --violet: #5f8575; /* Pista-toned desaturated accents */
+  --cyan: #3b5f4c;
+  --violet-border: rgba(95, 133, 117, 0.16);
+  --cyan-border: rgba(59, 95, 76, 0.16);
+}
+
+body:not(.dark).theme-skills {
+  --bg-primary: #E6F0FA; /* Light Blue */
+  --bg-secondary: #D6E4F5;
+  --violet: #5c7b8f;
+  --cyan: #4a7a96; /* Slate-blue accents */
+  --violet-border: rgba(92, 123, 143, 0.16);
+  --cyan-border: rgba(74, 122, 150, 0.16);
+}
+
+body:not(.dark).theme-contact {
+  --bg-primary: #FFF0F2; /* Soft Light Pink */
+  --bg-secondary: #FDE2E7;
+  --violet: #a36a75;
+  --cyan: #5c7b8f;
+  --violet-border: rgba(163, 106, 117, 0.16);
+  --cyan-border: rgba(92, 123, 143, 0.16);
+}
+
+/* Sleek Premium Theme Toggle Button styling */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(163, 106, 117, 0.1);
+  color: var(--text-gray);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--orange-light);
+  border-color: var(--orange-border);
+  transform: translateY(-1px) rotate(15deg);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.02),
+    0 0 10px rgba(163, 106, 117, 0.05);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Dark mode overrides for the toggle button */
+body.dark .theme-toggle-btn {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  color: var(--text-gray);
+  box-shadow: inset 0 0 8px rgba(0, 242, 254, 0.05);
+}
+
+body.dark .theme-toggle-btn:hover {
+  background: rgba(22, 32, 54, 0.75);
+  color: var(--cyan);
+  border-color: var(--cyan-border);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    0 0 12px var(--cyan-glow);
 }
 
 /* Reset */
@@ -64,7 +236,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444;
+  background: #d1d5db;
   border-radius: 3px;
 }
 
@@ -75,7 +247,7 @@ body {
 /* Selection */
 ::selection {
   background: var(--orange);
-  color: #000;
+  color: #fff;
 }
 
 /* ===== REUSABLE COMPONENTS ===== */
@@ -90,11 +262,12 @@ body {
 /* Card style */
 .card {
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--violet-border); /* Delicate subtle border for perfect visibility */
   border-radius: 16px;
   transition: var(--transition);
   overflow: hidden;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02); /* Soft organic shadow */
 }
 
 .card::before {
@@ -119,7 +292,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 107, 53, 0.12),
+    rgba(119, 150, 170, 0.15),
     transparent
   );
   transform: skewX(-25deg);
@@ -131,7 +304,7 @@ body {
 .card:hover {
   background: var(--bg-card-hover);
   transform: translateY(-6px);
-  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.45), 0 0 15px rgba(255, 107, 53, 0.05);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.08), 0 0 15px var(--violet-glow);
 }
 
 .card:hover::before {
@@ -149,7 +322,7 @@ body {
   gap: 8px;
   padding: 12px 28px;
   background: var(--orange);
-  color: #000;
+  color: var(--text-white-pure);
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
@@ -164,7 +337,7 @@ body {
 .btn-primary:hover {
   background: var(--orange-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 24px rgba(163, 106, 117, 0.25);
 }
 
 /* Outline button */
@@ -226,8 +399,8 @@ body {
 .tech-tag {
   display: inline-block;
   padding: 4px 12px;
-  background: rgba(255, 107, 53, 0.08);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  background: var(--orange-glow);
+  border: 1px solid var(--orange-border);
   border-radius: 20px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -236,8 +409,8 @@ body {
 }
 
 .tech-tag:hover {
-  background: rgba(255, 107, 53, 0.15);
-  border-color: var(--orange);
+  background: var(--orange-glow);
+  border-color: var(--orange-dark);
 }
 
 /* Social icon link */
@@ -328,7 +501,7 @@ body {
 
 .nav-link.active {
   color: var(--text-white) !important;
-  text-shadow: 0 0 12px rgba(255, 107, 53, 0.35);
+  text-shadow: 0 0 12px rgba(163, 106, 117, 0.35);
 }
 
 .nav-link.active::after {
@@ -387,10 +560,11 @@ dialog::backdrop {
 }
 
 .navbar-scrolled {
-  background: rgba(26, 26, 26, 0.85);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(163, 106, 117, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 .nav-links {
@@ -541,7 +715,7 @@ dialog::backdrop {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background: rgba(26, 26, 26, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--orange-border);
@@ -551,17 +725,17 @@ dialog::backdrop {
     gap: 4px;
     z-index: 1000;
     box-shadow: 
-      0 6px 24px rgba(0, 0, 0, 0.6), 
-      0 0 15px rgba(255, 107, 53, 0.15),
-      inset 0 0 10px rgba(255, 255, 255, 0.02);
+      0 6px 24px rgba(0, 0, 0, 0.08), 
+      0 0 15px rgba(163, 106, 117, 0.08),
+      inset 0 0 10px rgba(255, 255, 255, 0.2);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .menu-toggle:hover {
     border-color: var(--orange);
     box-shadow: 
-      0 8px 30px rgba(0, 0, 0, 0.7), 
-      0 0 20px rgba(255, 107, 53, 0.3);
+      0 8px 30px rgba(0, 0, 0, 0.08), 
+      0 0 20px rgba(92, 123, 143, 0.15);
     transform: scale(1.05);
   }
 
@@ -578,10 +752,10 @@ dialog::backdrop {
   /* Centered X transition when menu is open on mobile */
   .menu-toggle.open {
     border-color: var(--orange);
-    background: rgba(35, 35, 35, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.8), 
-      0 0 25px rgba(255, 107, 53, 0.4);
+      0 8px 32px rgba(0, 0, 0, 0.08), 
+      0 0 25px rgba(163, 106, 117, 0.15);
   }
 
   .menu-toggle.open .toggle-bar:nth-child(1) {
@@ -607,10 +781,10 @@ dialog::backdrop {
     transform: none;
     width: 280px;
     height: 100vh;
-    background: rgba(26, 26, 26, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    border-left: 1px solid rgba(255, 107, 53, 0.15);
+    border-left: 1px solid var(--violet-border);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -622,7 +796,7 @@ dialog::backdrop {
 
   .nav-links.open {
     right: 0;
-    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.6);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.05);
   }
 
   .nav-link {
@@ -714,7 +888,7 @@ dialog::backdrop {
 /* Premium Cybernetic Name Display */
 .cyber-name {
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 30%, #ff8c5a 75%, var(--orange) 100%);
+  background: linear-gradient(135deg, var(--violet-dark) 10%, var(--violet) 55%, var(--cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -725,10 +899,10 @@ dialog::backdrop {
 
 @keyframes nameGlow {
   0%, 100% {
-    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3)) drop-shadow(0 0 2px rgba(255, 107, 53, 0.15));
+    filter: drop-shadow(0 0 8px var(--violet-glow)) drop-shadow(0 0 2px var(--cyan-glow));
   }
   50% {
-    filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.5)) drop-shadow(0 0 4px rgba(255, 107, 53, 0.25));
+    filter: drop-shadow(0 0 16px rgba(163, 106, 117, 0.16)) drop-shadow(0 0 4px rgba(92, 123, 143, 0.12));
   }
 }
 
@@ -746,10 +920,10 @@ dialog::backdrop {
   align-items: center;
   gap: 10px;
   padding: 10px 20px;
-  background: rgba(26, 26, 26, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(163, 106, 117, 0.08);
   border-radius: 8px;
   color: var(--text-gray);
   font-family: var(--font-mono);
@@ -759,7 +933,7 @@ dialog::backdrop {
   cursor: pointer;
   transition: var(--transition);
   text-decoration: none;
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .back-btn svg {
@@ -771,10 +945,10 @@ dialog::backdrop {
 .back-btn:hover {
   border-color: var(--orange-border);
   color: var(--orange-light);
-  background: rgba(255, 107, 53, 0.03);
+  background: rgba(163, 106, 117, 0.03);
   box-shadow: 
-    0 0 20px rgba(255, 107, 53, 0.1),
-    inset 0 0 15px rgba(255, 107, 53, 0.05);
+    0 0 20px rgba(163, 106, 117, 0.08),
+    inset 0 0 15px rgba(163, 106, 117, 0.04);
   transform: translateY(-1px);
 }
 
@@ -785,8 +959,8 @@ dialog::backdrop {
 
 .back-btn:active {
   transform: translateY(1px);
-  background: rgba(255, 107, 53, 0.08);
-  box-shadow: 0 0 10px rgba(255, 107, 53, 0.2);
+  background: rgba(163, 106, 117, 0.08);
+  box-shadow: 0 0 10px rgba(163, 106, 117, 0.15);
 }
 
 /* Responsive Overrides */
