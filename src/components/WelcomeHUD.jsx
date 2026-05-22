@@ -139,6 +139,15 @@ export default function WelcomeHUD({ onEnter }) {
             inset 0 0 0 1px rgba(255, 255, 255, 0.7);
         }
 
+        /* Dynamic Dark Mode Overrides for the Welcome Frame Card to ensure perfect contrast */
+        body.dark .welcome-frame {
+          background: var(--bg-card); /* Deep translucent slate-navy */
+          box-shadow: 
+            0 24px 80px rgba(0, 0, 0, 0.35),
+            inset 0 0 0 1px rgba(0, 242, 254, 0.15);
+        }
+
+
 
         .welcome-content {
           z-index: 2;

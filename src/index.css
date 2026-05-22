@@ -963,6 +963,32 @@ dialog::backdrop {
   box-shadow: 0 0 10px rgba(163, 106, 117, 0.15);
 }
 
+/* Dark Mode Overrides for Back Button to ensure perfect visibility */
+body.dark .back-btn {
+  background: rgba(15, 23, 42, 0.72);
+  border-color: rgba(0, 242, 254, 0.25);
+  color: var(--text-white);
+  box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.05);
+}
+
+body.dark .back-btn svg {
+  color: var(--text-gray);
+}
+
+body.dark .back-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(22, 32, 54, 0.85);
+  box-shadow: 
+    0 0 20px var(--cyan-glow),
+    inset 0 0 15px rgba(0, 242, 254, 0.08);
+}
+
+body.dark .back-btn:hover svg {
+  color: var(--cyan);
+}
+
+
 /* Responsive Overrides */
 @media (max-width: 768px) {
   .subpage-header-container {
