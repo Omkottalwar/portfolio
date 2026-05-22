@@ -253,18 +253,55 @@ export default function SpaceVortex({ activeTab }) {
         const currentTab = activeTabRef.current || 'welcome';
         const config = tabConfigs[currentTab] || tabConfigs.welcome;
 
+        // Determine if viewport is mobile/tablet to dynamically adjust positioning offsets
+        const isMobile = window.innerWidth <= 992;
+        let camXOffset = config.camXOffset;
+        let camYOffset = config.camYOffset;
+        let camZ = config.camZ;
+        let coreScale = config.coreScale;
+
+        if (isMobile) {
+          if (currentTab === 'welcome') {
+            // Shift reactor core upwards so it sits behind the frame header, shrink it, and push camera back
+            camXOffset = 0;
+            camYOffset = 65;
+            camZ = 350;
+            coreScale = 0.75;
+          } else if (currentTab === 'about') {
+            camXOffset = 0;
+            camYOffset = 80;
+            camZ = 280;
+            coreScale = 0.85;
+          } else if (currentTab === 'projects') {
+            camXOffset = 0;
+            camYOffset = 90;
+            camZ = 260;
+            coreScale = 0.85;
+          } else if (currentTab === 'skills') {
+            camXOffset = 0;
+            camYOffset = 85;
+            camZ = 240;
+            coreScale = 0.85;
+          } else if (currentTab === 'contact') {
+            camXOffset = 0;
+            camYOffset = 80;
+            camZ = 300;
+            coreScale = 0.8;
+          }
+        }
+
         // Mouse easing (dampened)
         mouse.x += (mouse.targetX - mouse.x) * 0.06;
         mouse.y += (mouse.targetY - mouse.y) * 0.06;
 
         // Camera lerp: dynamic target matching + mouse parallax
-        const targetCamX = (mouse.x * 45) + config.camXOffset;
-        const targetCamY = (-mouse.y * 45) + config.camYOffset;
+        const targetCamX = (mouse.x * 45) + camXOffset;
+        const targetCamY = (-mouse.y * 45) + camYOffset;
         
         if (camera) {
           camera.position.x += (targetCamX - camera.position.x) * 0.04;
           camera.position.y += (targetCamY - camera.position.y) * 0.04;
-          camera.position.z += (config.camZ - camera.position.z) * 0.04;
+          camera.position.z += (camZ - camera.position.z) * 0.04;
           camera.lookAt(0, 0, 0);
         }
 
@@ -293,8 +330,8 @@ export default function SpaceVortex({ activeTab }) {
         const coreDriftZ = Math.sin(time * 0.2) * 12;
         
         // Combined layout shifting + Lissajous drift + mouse-follow parallax
-        const targetCoreX = (config.camXOffset * 0.35) + coreDriftX + (mouse.x * 25);
-        const targetCoreY = (config.camYOffset * 0.35) + coreDriftY + (mouse.y * 15);
+        const targetCoreX = (camXOffset * 0.35) + coreDriftX + (mouse.x * 25);
+        const targetCoreY = (camYOffset * 0.35) + coreDriftY + (mouse.y * 15);
         const targetCoreZ = -20 + coreDriftZ;
         
         if (reactorCore) {
@@ -304,11 +341,12 @@ export default function SpaceVortex({ activeTab }) {
 
           // Beating reactor core pulsing scale
           const corePulse = Math.sin(time * 2.8) * 0.08;
-          const targetScale = config.coreScale + corePulse;
+          const targetScale = coreScale + corePulse;
           reactorCore.scale.x += (targetScale - reactorCore.scale.x) * 0.05;
           reactorCore.scale.y += (targetScale - reactorCore.scale.y) * 0.05;
           reactorCore.scale.z += (targetScale - reactorCore.scale.z) * 0.05;
         }
+
         
         // Reactor core color & opacity lerp
         if (coreMaterial) {

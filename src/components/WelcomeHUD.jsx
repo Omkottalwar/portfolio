@@ -131,7 +131,14 @@ export default function WelcomeHUD({ onEnter }) {
           gap: 40px;
           position: relative;
           transition: all 0.5s var(--ease-out);
+          background: rgba(15, 15, 18, 0.45);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          box-shadow: 
+            0 24px 80px rgba(0, 0, 0, 0.5),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.02);
         }
+
 
         .welcome-content {
           z-index: 2;
