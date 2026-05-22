@@ -17,10 +17,11 @@
   --orange-border: rgba(255, 107, 53, 0.3);
 
   --text-white: #ffffff;
-  --text-light: #e0e0e0;
-  --text-gray: #a0a0a0;
-  --text-muted: #707070;
-  --text-dim: #505050;
+  --text-light: #f5f5f7;
+  --text-gray: #d2d2d7;
+  --text-muted: #a1a1a6;
+  --text-dim: #86868b;
+
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
